@@ -661,10 +661,13 @@ function GetLicenses(identifier, cb)
 end
 
 function GetCharacterName(source)
-	local xPlayer = QBCore.Functions.GetPlayer(source)
-	if xPlayer then
-		return xPlayer.PlayerData.name
-	end
+    local Player = QBCore.Functions.GetPlayer(source)
+    if Player ~= nil then
+        local firstname = Player.PlayerData.charinfo.firstname
+        local lastname = Player.PlayerData.charinfo.lastname
+        local name = firstname .. ' ' .. lastname
+        return name
+    end
 end
 
 function tprint (tbl, indent)
